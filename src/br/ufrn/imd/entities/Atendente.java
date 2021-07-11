@@ -1,7 +1,8 @@
+package br.ufrn.imd.entities;
+
 /**
  * 
  */
-package entities.imd.ufrn.br;
 
 import lombok.*;
 

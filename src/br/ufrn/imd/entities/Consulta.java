@@ -1,6 +1,9 @@
-package entities.imd.ufrn.br;
+package br.ufrn.imd.entities;
 
 import java.util.Date;
+
+import br.ufrn.imd.db.ConnectPaciente;
+import br.ufrn.imd.db.ConnectMedico;
 
 import lombok.*;
 @Data
@@ -8,10 +11,11 @@ import lombok.*;
 @AllArgsConstructor
 public class Consulta {
 	
+	
 	private Paciente paciente;
 	private Medico medico;
-	private Date inicio;
-	private Date fim;
+	private String inicio;
+	private String fim;
 	private Boolean concluida;
 
 }

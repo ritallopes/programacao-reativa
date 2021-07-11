@@ -1,7 +1,7 @@
 /**
  * 
  */
-package entities.imd.ufrn.br;
+package br.ufrn.imd.entities;
 
 import java.util.Date;
 import java.util.List;
