@@ -5,9 +5,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import com.ritallopes.clinica.db.ConnectConsulta;
-import com.ritallopes.entity.Consulta;
-import com.ritallopes.entity.Medico;
-import com.ritallopes.entity.Paciente;
+import com.ritallopes.entities.Consulta;
+import com.ritallopes.entities.Medico;
+import com.ritallopes.entities.Paciente;
 
 
 public class ConnectMedico extends Connect{

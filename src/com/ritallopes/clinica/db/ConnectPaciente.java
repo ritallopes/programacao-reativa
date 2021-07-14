@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import com.ritallopes.entity.Paciente;
+import com.ritallopes.entities.Paciente;
 
 public class ConnectPaciente extends Connect{
 	public ConnectPaciente() {

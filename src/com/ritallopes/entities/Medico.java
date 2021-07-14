@@ -1,12 +1,12 @@
 /**
  * 
  */
-package com.ritallopes.entity;
+package com.ritallopes.entities;
 
 import java.util.Date;
 import java.util.List;
 
-import com.ritallopes.entity.Consulta;
+import com.ritallopes.entities.Consulta;
 
 /**
  * @author Rita Lopes

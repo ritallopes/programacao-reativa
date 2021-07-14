@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.ritallopes.entity;
+package com.ritallopes.entities;
 
 import java.util.Date;
 

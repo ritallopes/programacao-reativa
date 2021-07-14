@@ -1,9 +1,10 @@
-package com.ritallopes.entity;
+package com.ritallopes.entities;
 import io.reactivex.annotations.NonNull;
 import lombok.*;
 @Data
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 public class Consulta {
 	
 	@NonNull

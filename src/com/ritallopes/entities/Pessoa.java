@@ -1,4 +1,4 @@
-package com.ritallopes.entity;
+package com.ritallopes.entities;
 
 import lombok.*;
 import lombok.experimental.NonFinal;

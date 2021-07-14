@@ -1,10 +1,11 @@
-package com.ritallopes.clinica.repository;
+package com.ritallopes.clinica.repositories;
 
 import java.util.List;
+
+import com.ritallopes.entities.Paciente;
+
 import java.util.ArrayList;
 import java.util.Collections;
-
-import com.ritallopes.entity.Paciente;
 
 
 public class PacienteRepository {
