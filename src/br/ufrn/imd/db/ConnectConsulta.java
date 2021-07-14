@@ -10,16 +10,23 @@ import br.ufrn.imd.entities.Medico;
 import br.ufrn.imd.entities.Paciente;
 
 public class ConnectConsulta extends Connect{
+	public ConnectConsulta() {
+		this.conectar();
+		this.createTable();
+		this.desconectar();
+	}
+	
 	 public Boolean createTable(){
 	        try {
 	            if (!connection.isClosed()){
 
 	                statement = connection.createStatement();
 	                String sql = "CREATE TABLE IF NOT EXISTS CONSULTA" +
-	                        "(CPFPACIENTE TEXT NOT NULL," +
-	                        " CPFMEDICO PRIMARY KEY         TEXT    NOT NULL, " +
-	                        " INICIO PRIMARY KEY          TEXT     NOT NULL,"
-	                        + "FIM PRIMARY KEY CONVENIO TEXT,"
+	                        "(ID INTEGER PRIMARY KEY AUTOINCREMENT,"
+	                        + "CPFPACIENTE TEXT NOT NULL," +
+	                        " CPFMEDICO TEXT NOT NULL, " +
+	                        " INICIO TEXT  NOT NULL,"
+	                        + "FIM  TEXT NOT NULL,"
 	                        + "CONCLUIDA TEXT);";
 	                statement.executeUpdate(sql);
 	                statement.close();
@@ -105,7 +112,7 @@ public class ConnectConsulta extends Connect{
 	                statement.close();
 
 	            }else{
-	                
+	                conectar();
 	                return listAllConsulta();
 	            }
 	        }catch (SQLException e){

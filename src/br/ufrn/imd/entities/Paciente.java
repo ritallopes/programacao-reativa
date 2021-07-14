@@ -3,8 +3,6 @@
  */
 package br.ufrn.imd.entities;
 
-import java.util.Date;
-
 import lombok.*;
 
 /**
@@ -13,7 +11,6 @@ import lombok.*;
  */
 
 @Data
-
 @NoArgsConstructor
 public class Paciente extends Pessoa {
 	private String convenio;

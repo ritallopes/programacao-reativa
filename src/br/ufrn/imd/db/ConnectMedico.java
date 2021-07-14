@@ -4,11 +4,9 @@ import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import br.ufrn.imd.entities.Consulta;
 import br.ufrn.imd.entities.Medico;
 import br.ufrn.imd.entities.Paciente;
-import br.ufrn.imd.entities.Consulta;
-
-
 import br.ufrn.imd.db.ConnectConsulta;
 
 

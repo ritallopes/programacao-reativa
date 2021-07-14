@@ -3,6 +3,8 @@ package br.ufrn.imd.entities;
 import java.util.Date;
 
 import br.ufrn.imd.db.ConnectPaciente;
+import br.ufrn.imd.entities.Medico;
+import br.ufrn.imd.entities.Paciente;
 import br.ufrn.imd.db.ConnectMedico;
 
 import lombok.*;

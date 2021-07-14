@@ -1,7 +1,5 @@
 package br.ufrn.imd.entities;
 
-import java.util.List;
-
 import lombok.*;
 import lombok.experimental.NonFinal;
 

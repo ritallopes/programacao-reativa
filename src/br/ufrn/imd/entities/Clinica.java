@@ -6,6 +6,7 @@ package br.ufrn.imd.entities;
 import java.util.Date;
 import java.util.List;
 
+import br.ufrn.imd.entities.Funcionario;
 /**
  * @author Rita Lopes
  *
