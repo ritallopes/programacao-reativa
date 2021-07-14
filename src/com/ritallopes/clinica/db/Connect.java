@@ -1,4 +1,4 @@
-package br.ufrn.imd.db;
+package com.ritallopes.clinica.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

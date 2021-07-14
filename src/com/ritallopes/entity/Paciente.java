@@ -1,7 +1,7 @@
 /**
  * 
  */
-package br.ufrn.imd.entities;
+package com.ritallopes.entity;
 
 import lombok.*;
 

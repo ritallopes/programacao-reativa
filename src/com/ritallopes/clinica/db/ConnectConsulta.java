@@ -1,13 +1,12 @@
-package br.ufrn.imd.db;
+package com.ritallopes.clinica.db;
 
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Date;
 
-import br.ufrn.imd.entities.Consulta;
-import br.ufrn.imd.entities.Medico;
-import br.ufrn.imd.entities.Paciente;
+import com.ritallopes.entity.Consulta;
+import com.ritallopes.entity.Medico;
+import com.ritallopes.entity.Paciente;
 
 public class ConnectConsulta extends Connect{
 	public ConnectConsulta() {
@@ -47,7 +46,7 @@ public class ConnectConsulta extends Connect{
 	        try {
 	            if (!connection.isClosed()){
 	                statement = connection.createStatement();
-	                String sql ="INSERT INTO CONSULTA ( CPFPACIENTE, CPFMEDICO,INICIO,FIM,CONCLUIDA) " +
+	                String sql ="INSERT INTO CONSULTA (CPFPACIENTE, CPFMEDICO,INICIO,FIM,CONCLUIDA) " +
 	                        "VALUES (\""+consulta.getPaciente().getCpf()+"\",\""+consulta.getMedico().getCpf()+"\",\""+consulta.getInicio()+"\",\""+consulta.getFim()+"\",\""+consulta.getConcluida().toString()+"\");";
 	                statement.executeUpdate(sql);
 	                statement.close();
@@ -85,6 +84,7 @@ public class ConnectConsulta extends Connect{
 	                while ( rs.next() ) {
 
 	                    Consulta consulta = null;
+	                    String id = rs.getString("id");
 	                    String  cpfPaciente = rs.getString("cpfpaciente");
 	                    String  cpfMedico = rs.getString("cpfMedico");
 	                    String inicio  = rs.getString("inicio");
@@ -104,7 +104,7 @@ public class ConnectConsulta extends Connect{
 	            		p.desconectar();
 	            		
 	            		
-	                    consulta = new Consulta(paciente, medico, inicio, fim, Boolean.valueOf(concluida));
+	                    consulta = new Consulta(id,paciente, medico, inicio, fim, Boolean.valueOf(concluida));
 
 	                    consultas.add(consulta);
 	                }
@@ -140,6 +140,7 @@ public class ConnectConsulta extends Connect{
 	                while ( rs.next() ) {
 
 	                    Consulta consulta = null;
+	                    String id = rs.getString("id");
 	                    String  cpfPaciente = rs.getString("cpfpaciente");
 	                    String  cpfMedico = rs.getString("cpfMedico");
 	                    String inicio  = rs.getString("inicio");
@@ -157,7 +158,7 @@ public class ConnectConsulta extends Connect{
 	            		Medico medico = m.selectMedico(cpfMedico);
 	            		p.desconectar();
 	            	 		
-	                    consulta = new Consulta(paciente, medico, inicio, fim, Boolean.valueOf(concluida));
+	                    consulta = new Consulta(id, paciente, medico, inicio, fim, Boolean.valueOf(concluida));
 	                    
 	                    
 

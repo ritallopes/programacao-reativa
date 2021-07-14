@@ -1,9 +1,10 @@
 import java.util.Calendar;
 
-import br.ufrn.imd.db.Connect;
-import br.ufrn.imd.db.ConnectConsulta;
-import br.ufrn.imd.db.ConnectMedico;
-import br.ufrn.imd.entities.Medico;
+import com.ritallopes.clinica.db.Connect;
+import com.ritallopes.clinica.db.ConnectConsulta;
+import com.ritallopes.clinica.db.ConnectMedico;
+import com.ritallopes.entity.Medico;
+
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 

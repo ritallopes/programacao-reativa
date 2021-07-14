@@ -1,12 +1,13 @@
 /**
  * 
  */
-package br.ufrn.imd.entities;
+package com.ritallopes.entity;
 
 import java.util.Date;
 import java.util.List;
 
-import br.ufrn.imd.entities.Consulta;
+import com.ritallopes.entity.Consulta;
+
 /**
  * @author Rita Lopes
  *

@@ -1,17 +1,13 @@
-package br.ufrn.imd.db;
+package com.ritallopes.clinica.db;
 
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import br.ufrn.imd.entities.Consulta;
-import br.ufrn.imd.entities.Medico;
-import br.ufrn.imd.entities.Paciente;
-import br.ufrn.imd.db.ConnectConsulta;
+import com.ritallopes.entity.Paciente;
 
-
-public class ConnectMedico extends Connect{
-	public ConnectMedico() {
+public class ConnectPaciente extends Connect{
+	public ConnectPaciente() {
 		this.conectar();
 		this.createTable();
 		this.desconectar();
@@ -21,13 +17,13 @@ public class ConnectMedico extends Connect{
 	            if (!connection.isClosed()){
 
 	                statement = connection.createStatement();
-	                String sql = "CREATE TABLE IF NOT EXISTS MEDICO" +
+	                String sql = "CREATE TABLE IF NOT EXISTS PACIENTE" +
 	                        "(CPF TEXT PRIMARY KEY NOT NULL," +
 	                        " NOME          TEXT    NOT NULL, " +
 	                        " TELEFONE          TEXT     NOT NULL,"
-	                        + "DATACONTRATACAO TEXT,"
-	                        + "CRM TEXT,"
-	                        + "ESPECIALIDADE TEXT);";
+	                        + "CONVENIO TEXT,"
+	                        + "DATACADASTRO TEXT);";
+
 
 	                statement.executeUpdate(sql);
 	                statement.close();
@@ -37,26 +33,26 @@ public class ConnectMedico extends Connect{
 	                this.createTable();
 	            }
 	        }catch (SQLException e){
-	            System.out.println("Erro ao criar tabela Medico");
+	            System.out.println("Erro ao criar tabela paciente");
 	            return false;
 	        }
 
 	        return null;
 	    }
 	 
-	 public Boolean createMedico(Medico medico){
+	 public Boolean createPaciente(Paciente paciente){
 	        try {
 	            if (!connection.isClosed()){
 	                statement = connection.createStatement();
-	                String sql ="INSERT INTO MEDICO ( CPF, NOME,TELEFONE, DATACONTRATACAO, CRM, ESPECIALIDADE) " +
-	                        "VALUES (\""+medico.getCpf()+"\",\""+medico.getNome()+"\",\""+medico.getTelefone()+"\",\""+medico.getDataContratacao()+"\",\""+medico.getCrm()+"\",\""+medico.getEspecialidade()+"\");";
+	                String sql ="INSERT INTO PACIENTE ( CPF, NOME,TELEFONE, CONVENIO, DATACADASTRO) " +
+	                        "VALUES (\""+paciente.getCpf()+"\",\""+paciente.getNome()+"\",\""+paciente.getTelefone()+"\",\""+paciente.getConvenio()+"\",\""+paciente.getDataCadastro()+"\");";
 	                statement.executeUpdate(sql);
 	                statement.close();
 	                return true;
 	            }else{
 	                conectar();
 	                createTable();
-	                createMedico(medico);
+	                createPaciente(paciente);
 	            }
 	        }catch (SQLException e){
 	            System.out.println("Erro ao cadastrar");
@@ -66,8 +62,8 @@ public class ConnectMedico extends Connect{
 	        return true;
 	    }
 	 
-	 public ArrayList<Medico> listAllMedico(){
-	        ArrayList<Medico> medicos = null; 
+	 public ArrayList<Paciente> listAllPaciente(){
+	        ArrayList<Paciente> pacientes = null; 
 	        try {
 	            if (!connection.isClosed()){
 
@@ -75,46 +71,41 @@ public class ConnectMedico extends Connect{
 	                connection.setAutoCommit(false);
 	                statement = connection.createStatement();
 
-	                ResultSet rs = statement.executeQuery( "SELECT * FROM MEDICO;" );
+	                ResultSet rs = statement.executeQuery( "SELECT * FROM PACIENTE;" );
 
 
-	                medicos = new ArrayList<>();
+	                pacientes = new ArrayList<>();
 
 	                while ( rs.next() ) {
 
-	                    Medico medico = null;
+	                    Paciente paciente = null;
 	                    String  cpf = rs.getString("cpf");
 	                    String nome  = rs.getString("nome");
 	                    String  telefone = rs.getString("telefone");
-	                    String dataContratacao  = rs.getString("datacontratacao");  
-	                    String crm = rs.getString("crm");
-	                    String especialidade = rs.getString("especialidade");
-	                    
-	                    ConnectConsulta cc = new ConnectConsulta();
-	                    ArrayList<Consulta> consultas = cc.listAllConsultaMedico(cpf);
+	                    String convenio  = rs.getString("convenio");  
+	                    String dataCadastro = rs.getString("datacadastro");
 
+	                    paciente = new Paciente(cpf, nome, telefone, convenio, dataCadastro);
 
-	                    medico = new Medico(cpf, nome, telefone,dataContratacao, crm, especialidade, consultas);
-
-	                    medicos.add(medico);
+	                    pacientes.add(paciente);
 	                }
 	                rs.close();
 	                statement.close();
 
 	            }else{
 	                
-	                return listAllMedico();
+	                return listAllPaciente();
 	            }
 	        }catch (SQLException e){
 	            System.out.println("Erro ao listar");
 	            e.printStackTrace();
 
 	        }
-	        return medicos;
+	        return pacientes;
 	    }
 	 
-	 public Medico selectMedico(String cpf){
-	        Medico medico = null; 
+	 public Paciente selectPaciente(String cpf){
+	        Paciente paciente = null; 
 	        try {
 	            if (!connection.isClosed()){
 
@@ -122,40 +113,32 @@ public class ConnectMedico extends Connect{
 	                connection.setAutoCommit(false);
 	                statement = connection.createStatement();
 
-	                ResultSet rs = statement.executeQuery( "SELECT * FROM MEDICO WHERE CPF="+cpf+";" );
-
+	                ResultSet rs = statement.executeQuery( "SELECT * FROM PACIENTE WHERE CPF="+cpf+";" );
 
 
 
 	                while ( rs.next() ) {
-
 	                    String  cpf2 = rs.getString("cpf");
 	                    String nome  = rs.getString("nome");
 	                    String  telefone = rs.getString("telefone");
-	                    String dataContratacao  = rs.getString("datacontratacao");  
-	                    String crm = rs.getString("crm");
-	                    String especialidade = rs.getString("especialidade");
+	                    String convenio  = rs.getString("convenio");  
+	                    String dataCadastro = rs.getString("datacadastro");
 
-	                    ConnectConsulta cc = new ConnectConsulta();
-	                    ArrayList<Consulta> consultas = cc.listAllConsultaMedico(cpf);
-
-	                    medico = new Medico(cpf, nome, telefone,dataContratacao, crm, especialidade, consultas);
-
+	                    paciente = new Paciente(cpf2, nome, telefone, convenio, dataCadastro);
 	                }
 	                rs.close();
 	                statement.close();
 
 	            }else{
 	                
-	                return selectMedico(cpf);
+	                return selectPaciente(cpf);
 	            }
 	        }catch (SQLException e){
 	            System.out.println("Erro ao listar");
 	            e.printStackTrace();
 
 	        }
-	        return medico;
+	        return paciente;
 	    }
-
 
 }
