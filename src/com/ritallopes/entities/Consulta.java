@@ -14,5 +14,10 @@ public class Consulta {
 	private String inicio;
 	private String fim;
 	private Boolean concluida;
+	
+	
+	public String toString() {
+		return "ID: "+this.id+", Inicio: "+this.inicio+", Fim: "+this.fim+" Paciente:\n\t"+this.paciente.toString()+"\n\t Médico:"+this.medico.toString();
+	}
 
 }

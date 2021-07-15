@@ -9,8 +9,6 @@ import com.ritallopes.entities.Paciente;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-
-
 public class ConsultaRepository {
 	private static ConsultaRepository consultaRepository;
 	private ArrayList<Consulta> consultas = new ArrayList<>();
@@ -24,8 +22,8 @@ public class ConsultaRepository {
 	}
 	
 	
-	public ArrayList<Consulta> getAll() {
-		return consultas;
+	public Flux<Consulta> getAll() {
+		return Flux.fromIterable(consultas);
 	}
 	
 	public void save(Consulta consulta) {
@@ -41,8 +39,19 @@ public class ConsultaRepository {
 	public Flux<Consulta> getByPaciente(Paciente paciente){
 		return Flux.fromIterable(consultas).filter((consulta)->(consulta.getPaciente().equals(paciente)));
 	}
+	public Mono<Boolean> deleteById(String id){
+		return Mono.just(consultas.remove(getById(id)));
+	}
+	
+	public Mono<Boolean> deleteByPaciente(Paciente paciente){
+		return getByPaciente(paciente).collectList().map((consultaL) -> (consultas.remove(consultaL.get(0))));
+	}
 	public Mono<Boolean> deleteByMedico(Medico medico){
 		return getByMedico(medico).collectList().map((consultaL) -> (consultas.remove(consultaL.get(0))));
 	}
+	
+
+	
+	
 
 }

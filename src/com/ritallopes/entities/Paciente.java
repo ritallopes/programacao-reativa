@@ -20,4 +20,7 @@ public class Paciente extends Pessoa {
 		this.convenio = convenio;
 		this.dataCadastro = dataCadastro;
 	}
+	public String toString() {
+		return super.toString().concat(" Convenio: "+this.convenio+", data de Cadastro: "+this.dataCadastro);
+	}
 }

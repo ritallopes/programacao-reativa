@@ -3,8 +3,6 @@
  */
 package com.ritallopes.entities;
 
-import java.util.Date;
-
 import lombok.*;
 
 /**
@@ -14,12 +12,14 @@ import lombok.*;
 
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor
 public class Funcionario extends Pessoa{
 	private String dataContratacao;
 	public Funcionario(String nome, String  cpf, String  telefone, String  dataContratacao) {
-		super(nome, cpf, telefone);		
+		super(nome, cpf, telefone);	
+		this.dataContratacao = dataContratacao;
 	}
-	
+	public String toString() {
+		return super.toString().concat(" Data Cadastro: "+this.dataContratacao+",");
+	}
 }
