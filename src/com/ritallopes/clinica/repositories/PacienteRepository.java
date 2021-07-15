@@ -10,7 +10,7 @@ import java.util.Collections;
 
 public class PacienteRepository {
 	private static PacienteRepository pacienteRepository;
-	private List<Paciente> pacientes = new ArrayList<>();
+	private ArrayList<Paciente> pacientes = new ArrayList<>();
 	
 	
 	public static PacienteRepository getInstance() {
@@ -21,8 +21,8 @@ public class PacienteRepository {
 	}
 	
 	
-	public List getAll() {
-		return Collections.unmodifiableList(pacientes);
+	public ArrayList<Paciente> getAll() {
+		return pacientes;
 	}
 	
 	public void save(Paciente paciente) {

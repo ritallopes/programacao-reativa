@@ -10,7 +10,7 @@ import java.util.Collections;
 
 public class MedicoRepository {
 	private static MedicoRepository medicoRepository;
-	private List<Medico> medicos = new ArrayList<>();
+	private ArrayList<Medico> medicos = new ArrayList<>();
 	
 	
 	public static MedicoRepository getInstance() {
@@ -21,8 +21,8 @@ public class MedicoRepository {
 	}
 	
 	
-	public List getAll() {
-		return Collections.unmodifiableList(medicos);
+	public ArrayList<Medico> getAll() {
+		return medicos;
 	}
 	
 	public void save(Medico medico) {

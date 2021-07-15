@@ -17,7 +17,7 @@ public class PacienteServico implements IServico {
 		
 	}
 
-	public void getAll() {
+	public void listAll() {
 		// TODO Auto-generated method stub
 		
 	}

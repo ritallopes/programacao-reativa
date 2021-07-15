@@ -9,6 +9,7 @@ import com.ritallopes.clinica.repositories.ConsultaRepository;
 import com.ritallopes.clinica.repositories.MedicoRepository;
 import com.ritallopes.clinica.repositories.PacienteRepository;
 import com.ritallopes.clinica.services.ConsultaServico;
+import com.ritallopes.clinica.services.MedicoServico;
 import com.ritallopes.clinica.services.PacienteServico;
 import com.ritallopes.entities.Consulta;
 import com.ritallopes.entities.Medico;
@@ -55,7 +56,7 @@ public class Main {
 						cs.update();
 						break;
 					case 4:
-						cs.getAll();
+						cs.listAll();
 						break;
 
 					default:
@@ -81,7 +82,7 @@ public class Main {
 						ps.update();
 						break;
 					case 4:
-						ps.getAll();
+						ps.listAll();
 						break;
 					default:
 						repeatSubmenu = false;
@@ -106,7 +107,7 @@ public class Main {
 						ms.update();
 						break;
 					case 4:
-						ms.getAll();
+						ms.listAll();
 						break;
 
 					default:
