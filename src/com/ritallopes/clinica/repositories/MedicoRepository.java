@@ -27,8 +27,8 @@ public class MedicoRepository {
 		return Flux.fromIterable(medicos);
 	}
 	
-	public void save(Medico medico) {
-		medicos.add(medico);
+	public Mono<Boolean> save(Medico medico) {
+		return Mono.just(medicos.add(medico));
 	}
 
 
@@ -39,7 +39,7 @@ public class MedicoRepository {
 		return Flux.fromIterable(medicos).filter((medico) -> medico.getEspecialidade().equals(especialidade));
 	}
 	public Mono<Boolean> deleteByCpf(String cpf) {
-		return Mono.just(medicos.remove(getByCpf(cpf)));
+		return Mono.just(medicos.remove(getByCpf(cpf).block()));
 	}
 	
 }

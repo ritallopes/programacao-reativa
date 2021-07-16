@@ -26,12 +26,12 @@ public class ConsultaRepository {
 		return Flux.fromIterable(consultas);
 	}
 	
-	public void save(Consulta consulta) {
-		consultas.add(consulta);
+	public Mono<Boolean> save(Consulta consulta) {
+		return Mono.just(consultas.add(consulta));
 	}
 	
 	public Mono<Consulta> getById(String id){
-		return Flux.fromIterable(consultas).filter((consulta)->(consulta.getId() == id)).single();
+		return Flux.fromIterable(consultas).filter((consulta)->(consulta.getId() == id)).singleOrEmpty();
 	}
 	public Flux<Consulta> getByMedico(Medico medico){
 		return Flux.fromIterable(consultas).filter((consulta)->(consulta.getMedico().getCpf() == medico.getCpf()));
@@ -40,7 +40,7 @@ public class ConsultaRepository {
 		return Flux.fromIterable(consultas).filter((consulta)->(consulta.getPaciente().equals(paciente)));
 	}
 	public Mono<Boolean> deleteById(String id){
-		return Mono.just(consultas.remove(getById(id)));
+		return Mono.just(consultas.remove(getById(id).block()));
 	}
 	
 	public Mono<Boolean> deleteByPaciente(Paciente paciente){

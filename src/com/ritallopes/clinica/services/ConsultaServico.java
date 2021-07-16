@@ -45,7 +45,7 @@ public class ConsultaServico implements IServico {
 		consulta.setId(UUID.randomUUID().toString());
 		
 		
-		consultaRepository.save(consulta);
+		consultaRepository.save(consulta).subscribe();
 		consultaRepository.getById(consulta.getId()).subscribe(co -> System.out.println(co.toString()));
 		
 	}
